@@ -9,13 +9,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS,  } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { provideHttpClient,  } from '@angular/common/http';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+
+
 @NgModule({
   declarations: [
      
@@ -26,7 +28,6 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     CommonModule,
     MatSidenavModule,
-  ,
     MatListModule,
     MatIconModule,
     MatToolbarModule,
@@ -37,7 +38,6 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     ReactiveFormsModule,  
     MatButtonModule,
-    HttpClientModule  ,
   ],
   providers: [
     // Use provideHttpClient() to configure HTTP client

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup,  Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { MatCardModule } from '@angular/material/card';
@@ -32,24 +32,22 @@ import { StorageService } from 'src/app/services/Storage.service';
   templateUrl: './side-login.component.html'
 })
 export class AppSideLoginComponent implements OnInit {
-  form = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    password: new FormControl('', [Validators.required]),
-  });
-
+ loginForm: FormGroup; 
+  
   errorMessage: string = '';
 
-  constructor(private router: Router, private authService: AuthService, private storageService: StorageService) {}
+  constructor(private router: Router, private authService: AuthService, private storageService: StorageService, private fb:FormBuilder) {}
 
   ngOnInit(): void {
-    // Initialisation logic (if needed)
+    this.loginForm = this.fb.group({
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]]
+    });
   }
 
-  get f() {
-    return this.form.controls;
-  }
+ 
 
-  submit() {
+  /*submit() {
     console.log("heree")
   console.log(this.form.value.username)
   console.log(this.form.value.password)
@@ -57,5 +55,35 @@ export class AppSideLoginComponent implements OnInit {
   const password = String(this.form.value.password);
 
   this.authService.login(username, password)
+  }*/
+  onSubmit() {
+    if (this.loginForm.valid) {
+      const { username, password } = this.loginForm.value;
+  
+      this.authService.login(username, password).subscribe(
+        (response) => {
+          console.log('Login successful:', response);
+  
+          // Vérifiez que la réponse contient les tokens
+          if (response.access_token && response.refresh_token) {
+            // Stocker les tokens dans le StorageService
+            this.storageService.saveTokens(response.access_token, response.refresh_token);
+  
+            alert('Login successful!');
+            // Rediriger l'utilisateur après la connexion
+            this.router.navigate(['/dashboard']);
+          } else {
+            this.errorMessage = 'Tokens are missing in the response!';
+          }
+        },
+        (error) => {
+          console.error('Login error:', error);
+          this.errorMessage = 'Invalid username or password';
+        }
+      );
+    } else {
+      this.errorMessage = 'Please enter username and password';
+    }
   }
+  
 }

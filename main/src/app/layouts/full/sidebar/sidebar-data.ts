@@ -51,7 +51,7 @@ export const navItems: NavItem[] = [
     displayName: 'Reclamation',
     iconName: 'bell-exclamation',
     route: '/ui-components/reclamation',
-    accessRoles: ["ROLE_ADMINISTRATEUR"]
+    accessRoles: ["ROLE_ADMINISTRATEUR",]
 
   },
   {
