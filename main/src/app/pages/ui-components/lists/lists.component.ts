@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
@@ -17,8 +17,11 @@ export interface Section {
   imports: [MatListModule, MatCardModule, DatePipe,MatIconModule, MaterialModule ],
   templateUrl: './lists.component.html',
 })
-export class AppListsComponent {
+export class AppListsComponent implements OnInit {
   constructor() {}
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
   typesOfShoes: string[] = ['Loafers', 'Sneakers'];
 

@@ -1,26 +1,21 @@
 import { Routes } from '@angular/router';
-
-// ui
 import { AppBadgeComponent } from './badge/badge.component';
-import { AppChipsComponent } from './chips/chips.component';
+import { LigneCommandeComponent } from './ligne-commande/ligne-commande.component';
 import { AppListsComponent } from './lists/lists.component';
 import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
-import { AppFormsComponent } from './forms/forms.component';
-import { AppTablesComponent } from './tables/tables.component';
-
+import { BonTravailListComponent } from './bon-travail/bon-travail-list.component';
+import { AppReclamationComponent } from './Reclamation/Reclamation.component'; 
+import { AppProduitComponent } from './produit/produit.component';
+import { CommandeComponent } from './commande/commande.component';
 export const UiComponentsRoutes: Routes = [
   {
     path: '',
     children: [
-      {
-        path: 'badge',
+      {  path: 'badge',
         component: AppBadgeComponent,
       },
-      {
-        path: 'chips',
-        component: AppChipsComponent,
-      },
+    
       {
         path: 'lists',
         component: AppListsComponent,
@@ -34,12 +29,25 @@ export const UiComponentsRoutes: Routes = [
         component: AppTooltipsComponent,
       },
       {
-        path: 'forms',
-        component: AppFormsComponent,
+        path: 'BonTravail',
+        component: BonTravailListComponent,
       },
       {
-        path: 'tables',
-        component: AppTablesComponent,
+        path: 'produit',
+        component: AppProduitComponent,
+      },
+      {
+        path: 'commande',
+        component: CommandeComponent ,
+      },
+
+      {
+        path: 'ligne-commande',
+        component: LigneCommandeComponent,
+      },
+      {
+        path: 'reclamation',
+        component: AppReclamationComponent,
       },
     ],
   },

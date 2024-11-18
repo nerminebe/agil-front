@@ -5,17 +5,13 @@
     <i-tabler name="menu-2" class="icon-20 d-flex"></i-tabler>
   </button>
 
-
   <button mat-icon-button aria-label="Notifications">
     <i-tabler class="d-flex" name="bell" matBadge="1" matBadgeColor="primary"></i-tabler>
   </button>
 
-
   <span class="flex-1-auto"></span>
 
-  <!-- --------------------------------------------------------------- -->
-  <!-- profile Dropdown -->
-  <!-- --------------------------------------------------------------- -->
+  <!-- Profile Dropdown -->
   <a mat-flat-button color="primary" href="https://adminmart.com/product/modernize-angular-admin-dashboard/"
     target="_blank" class="d-flex justify-content-center">
     Download Free
@@ -37,8 +33,12 @@
           class="icon-18 d-flex"></i-tabler></mat-icon>My Task
     </button>
 
+    <!-- Deconnexion Section -->
     <div class="p-x-12 m-t-12">
+      <!-- Ancien bouton avec le lien -->
       <a [routerLink]="['/authentication/login']" mat-stroked-button color="primary" class="w-100">Logout</a>
+      <!-- Nouveau bouton qui appelle onLogout() -->
+      <button mat-button (click)="onLogout()">Déconnexion</button>
     </div>
   </mat-menu>
 </mat-toolbar>

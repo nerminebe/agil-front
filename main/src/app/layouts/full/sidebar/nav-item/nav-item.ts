@@ -12,4 +12,7 @@ export interface NavItem {
     route?: string;
     children?: NavItem[];
     ddType?: string;
+    accessRoles?:String[];
+    
+
 }

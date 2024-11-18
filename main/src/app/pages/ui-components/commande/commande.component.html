@@ -1,0 +1,104 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+      <div class="card shadow-sm p-4 mb-5 form-container">
+        <h2 class="text-center mb-4">{{ isEditMode ? 'Edit Commande' : 'Nouvelle commande' }}</h2>
+        <form (ngSubmit)="saveCommande()">
+          <!-- Montant Field -->
+          <div class="form-group mb-4">
+            <label for="montant" class="form-label">Montant Total</label>
+            <input
+              [(ngModel)]="commande.montant"
+              name="montant"
+              id="montant"
+              type="number"
+              class="form-control form-control-lg"
+              required
+            />
+          </div>
+
+          <!-- Status (Etat) Field -->
+          <div class="form-group mb-4">
+            <label for="etat" class="form-label">Status:</label>
+            <select
+              [(ngModel)]="commande.etat"
+              name="etat"
+              id="etat"
+              class="form-select form-select-lg"
+              required
+            >
+              <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+            </select>
+          </div>
+
+          <!-- Date Field -->
+          <div class="form-group mb-4">
+            <label for="date" class="form-label">Date de commande:</label>
+            <input
+              [(ngModel)]="commande.date"
+              name="date"
+              id="date"
+              type="date"
+              class="form-control form-control-lg"
+              required
+            />
+          </div>
+
+          <!-- Chauffeur Name -->
+          <div class="form-group mb-4">
+            <label for="nomDuChauffeur" class="form-label">Nom du Chauffeur</label>
+            <input
+              [(ngModel)]="commande.nomDuChauffeur"
+              name="nomDuChauffeur"
+              id="nomDuChauffeur"
+              type="text"
+              class="form-control form-control-lg"
+              required
+            />
+          </div>
+
+          <!-- Chauffeur Phone -->
+          <div class="form-group mb-4">
+            <label for="tel" class="form-label">Téléphone du Chauffeur</label>
+            <input
+              [(ngModel)]="commande.tel"
+              name="tel"
+              id="tel"
+              type="text"
+              class="form-control form-control-lg"
+              required
+            />
+          </div>
+
+          <!-- Command Reference -->
+          <div class="form-group mb-4">
+            <label for="referenceCommande" class="form-label">Référence Commande</label>
+            <input
+              [(ngModel)]="commande.referenceCommande"
+              name="referenceCommande"
+              id="referenceCommande"
+              type="text"
+              class="form-control form-control-lg"
+              required
+            />
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary w-100 py-3">
+            {{ isEditMode ? 'Modifier' : 'Ajouter' }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Commandes List -->
+  <h3 class="text-center mt-5">Liste des Commandes</h3>
+  <ul class="list-group list-group-flush mb-5">
+    <li *ngFor="let cmd of commandes" class="list-group-item d-flex justify-content-between align-items-center p-4">
+      <span>
+        <strong>#{{ cmd.id }}</strong> - {{ cmd.montant | currency }} - {{ cmd.etat }} - {{ cmd.date | date:'shortDate' }}
+      </span>
+      <div>
+        <button (click)="loadCommandeForEdit(cmd.id)" class="btn btn-outline-secondary btn-sm me-2">Edit</button>
+        <button (click)="deleteCommande(cmd.id)" class="btn btn-outline-danger btn-sm">

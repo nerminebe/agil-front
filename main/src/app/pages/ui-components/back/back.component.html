@@ -1,0 +1,37 @@
+<div *ngIf="isLoading">Chargement des données...</div>
+
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<div *ngIf="!isLoading && !error">
+  <h2>Liste des Commandes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>État</th>
+        <th>Date</th>
+        <th>Montant</th>
+        <th>Nom du Chauffeur</th>
+        <th>Référence Commande</th>
+        <th>Lignes de Commande</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let commande of commandes">
+        <td>{{ commande.id }}</td>
+        <td>{{ commande.etat }}</td>
+        <td>{{ commande.date  }}</td>
+        <td>{{ commande.montant }}</td>
+        <td>{{ commande.nomDuChauffeur }}</td>
+        <td>{{ commande.referenceCommande }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let ligne of commande.lignesDeCommande">
+              {{ ligne.produit }} - {{ ligne.quantite }} x {{ ligne.prix }}€
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

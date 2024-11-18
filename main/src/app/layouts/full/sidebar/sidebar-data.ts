@@ -8,44 +8,63 @@ export const navItems: NavItem[] = [
     displayName: 'Dashboard',
     iconName: 'layout-grid-add',
     route: '/dashboard',
+    accessRoles: ["ROLE_ADMINISTRATEUR"],
   },
   {
-    navCap: 'Ui Components',
+    navCap: 'UI Components',
   },
   {
-    displayName: 'Badge',
-    iconName: 'archive',
-    route: '/ui-components/badge',
-  },
-  {
-    displayName: 'Chips',
+    displayName: 'Ligne_Commande',
     iconName: 'info-circle',
-    route: '/ui-components/chips',
+    route: '/ui-components/ligne-commande',
+    accessRoles: ["ROLE_ADMINISTRATEUR"],
+
   },
   {
-    displayName: 'Lists',
+    displayName: 'Produit_Station',
     iconName: 'list-details',
     route: '/ui-components/lists',
+    accessRoles: ["ROLE_ADMINISTRATEUR"],
+
   },
   {
-    displayName: 'Menu',
+    displayName: 'Station',
     iconName: 'file-text',
     route: '/ui-components/menu',
+    accessRoles: ["ROLE_ADMINISTRATEUR"],
+
   },
   {
-    displayName: 'Tooltips',
+    displayName: 'Depot',
     iconName: 'file-text-ai',
     route: '/ui-components/tooltips',
+    accessRoles: ["ROLE_ADMINISTRATEUR"],
+
   },
   {
-    displayName: 'Forms',
+    displayName: 'Bon de travail',
     iconName: 'clipboard-text',
-    route: '/ui-components/forms',
+    route: '/ui-components/BonTravail',
+    accessRoles: [],
   },
   {
-    displayName: 'Tables',
-    iconName: 'table',
-    route: '/ui-components/tables',
+    displayName: 'Reclamation',
+    iconName: 'bell-exclamation',
+    route: '/ui-components/reclamation',
+    accessRoles: ["ROLE_ADMINISTRATEUR"]
+
+  },
+  {
+    displayName: 'Produit',
+    iconName: 'brand-producthunt',
+    route: '/ui-components/produit',
+    accessRoles: [],
+  },
+  {
+    displayName: 'Commande',
+    iconName: 'command',
+    route: '/ui-components/commande',
+    accessRoles: [],
   },
   {
     navCap: 'Auth',
@@ -54,11 +73,13 @@ export const navItems: NavItem[] = [
     displayName: 'Login',
     iconName: 'login',
     route: '/authentication/login',
+    accessRoles: [],
   },
   {
     displayName: 'Register',
     iconName: 'user-plus',
     route: '/authentication/register',
+    accessRoles: [],
   },
   {
     navCap: 'Extra',
@@ -67,10 +88,12 @@ export const navItems: NavItem[] = [
     displayName: 'Icons',
     iconName: 'mood-smile',
     route: '/extra/icons',
+    accessRoles: [],
   },
   {
     displayName: 'Sample Page',
     iconName: 'brand-dribbble',
     route: '/extra/sample-page',
+    accessRoles: [],
   },
 ];

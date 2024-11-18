@@ -10,6 +10,7 @@ import { MaterialModule } from 'src/app/material.module';
 import { RouterModule } from '@angular/router';
 import { CommonModule, NgForOf } from '@angular/common';
 import { NgScrollbarModule } from 'ngx-scrollbar';
+import { AuthService } from '../../../services/auth.service';  // Importer AuthService
 
 @Component({
   selector: 'app-header',
@@ -25,6 +26,10 @@ export class HeaderComponent {
   @Output() toggleMobileFilterNav = new EventEmitter<void>();
   @Output() toggleCollapsed = new EventEmitter<void>();
 
+  constructor(private authService: AuthService) {}
 
+  // Méthode pour déconnecter l'utilisateur
+  onLogout(): void {
+    this.authService.logout();  // Appeler la méthode logout de AuthService
+  }
 }
-

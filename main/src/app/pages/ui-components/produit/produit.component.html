@@ -1,0 +1,59 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Ajouter un produit</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form (ngSubmit)="addProduit()">
+            <mat-form-field appearance="fill">
+                <mat-label>Nom du Produit</mat-label>
+                <input matInput [(ngModel)]="newProduit.nom" name="nom" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Type de Produit</mat-label>
+                <mat-select [(ngModel)]="newProduit.typeProduit" name="typeProduit" required>
+                    <mat-option *ngFor="let type of typeProduitEnum | keyvalue" [value]="type.value">
+                        {{ type.value }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Prix Unitaire</mat-label>
+                <input matInput type="number" [(ngModel)]="newProduit.prixUnitaire" name="prixUnitaire" required>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit">Ajouter Produit</button>
+        </form>
+    </mat-card-content>
+</mat-card>
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Liste des Produits</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <table mat-table [dataSource]="produits" class="mat-elevation-z8">
+            <!-- Product Name Column -->
+            <ng-container matColumnDef="nom">
+                <th mat-header-cell *matHeaderCellDef> Nom </th>
+                <td mat-cell *matCellDef="let produit"> {{ produit.nom }} </td>
+            </ng-container>
+
+            <!-- Product Type Column -->
+            <ng-container matColumnDef="typeProduit">
+                <th mat-header-cell *matHeaderCellDef> Type </th>
+                <td mat-cell *matCellDef="let produit"> {{ produit.typeProduit }} </td>
+            </ng-container>
+
+            <!-- Product Price Column -->
+            <ng-container matColumnDef="prixUnitaire">
+                <th mat-header-cell *matHeaderCellDef> Prix Unitaire </th>
+                <td mat-cell *matCellDef="let produit"> {{ produit.prixUnitaire }} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="['nom', 'typeProduit', 'prixUnitaire']"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['nom', 'typeProduit', 'prixUnitaire']"></tr>
+        </table>
+    </mat-card-content>
+</mat-card>

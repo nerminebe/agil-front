@@ -18,8 +18,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent implements OnInit {
-  constructor() { }
-  @Input() showToggle = true;
+  @Input() showToggle: boolean = true; // This should be an @Input property
   @Output() toggleMobileNav = new EventEmitter<void>();
   @Output() toggleCollapsed = new EventEmitter<void>();
 
